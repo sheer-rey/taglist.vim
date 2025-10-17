@@ -60,6 +60,14 @@
 let s:cpo_save = &cpo
 set cpo&vim
 
+" Check whether the taglist plugin is disabled by user request
+if exists('Tlist_Disabled') && g:Tlist_Disabled
+    " Taglist plugin is disabled by user request
+    let loaded_taglist = 'no'
+    let &cpo = s:cpo_save
+    finish
+endif
+
 if !exists('loaded_taglist')
     " First time loading the taglist plugin
     "
